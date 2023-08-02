@@ -1,0 +1,32 @@
+version: "3.4"
+
+services:
+  api:
+    build:
+      context: .
+      target: development
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 3000:3000
+    command: npm run start:dev
+    networks:
+      - common
+    environment:
+      PORT: 3000
+      MONGO_URL: 'mongodb://mongo/v-crawler'
+      NODE_ENV: 'development'
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data:/data/db
+    networks:
+      - common
+
+networks:
+  common:

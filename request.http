@@ -1,0 +1,15 @@
+@serverUrl = http://localhost:3000
+
+### URL For Crawling data by year and type: drivers, teams
+### If not use type, default type is races
+
+GET {{serverUrl}}/crawling-race-result?year=2001
+Content-Type: application/json
+
+###
+### URL For searching race result with query field: year, driver, team
+### If not use query field, default get all data race result
+GET {{serverUrl}}/race-result?year=2023&driver=Verstappen&team=McLaren Mercedes
+Content-Type: application/json
+
+###
